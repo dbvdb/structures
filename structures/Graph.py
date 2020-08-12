@@ -41,6 +41,22 @@ class Graph:
         """Compute the degree for a node"""
         return len(self.nodes[value].neighbours)
 
+    def dfs(self):
+        """Traverse the graph by depth first search"""
+        ...
+
+    def bfs(self):
+        """Traverse the graph by breadth first search"""
+        ...
+
+    def is_connected(self):
+        """Check whether the graph is connected"""
+        ...
+
+    def is_empty(self):
+        """Check whether the graph is empty"""
+        return len(self.nodes) == 0
+
     def __repr__(self):
         return f"<Graph>"
 
@@ -65,4 +81,3 @@ if __name__ == '__main__':
     for i in graph.adjacency_list(1):
         print(i)
 
-    print(graph.nodes[1])
