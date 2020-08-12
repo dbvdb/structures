@@ -26,7 +26,7 @@ class Graph:
 
     def adjacency_list(self, value):
         for node in self.nodes[value].neighbours:
-            print(f"{value} -> {node}")
+            yield (value, node)
 
     def degree(self, value):
         return len(self.nodes[value].neighbours)
@@ -50,3 +50,7 @@ if __name__ == '__main__':
     print(graph.nodes[2].neighbours)
 
     print(graph.degree(3))
+
+    for i in graph.adjacency_list(1):
+        print(i)
+
