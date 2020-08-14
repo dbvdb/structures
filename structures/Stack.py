@@ -16,6 +16,17 @@ class Stack:
 
         return self.container.pop()
 
+    def empty(self):
+        """Stack is empty or not"""
+        return self.size == 0
+
+    def peek(self):
+        """"""
+        if self.size == 0:
+            return -1
+
+        return self.container[-1]
+
 
 if __name__ == '__main__':
     stack = Stack()
