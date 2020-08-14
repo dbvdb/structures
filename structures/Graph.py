@@ -16,18 +16,18 @@ class Graph:
         self.nodes = {}
         self.size = 0
 
-    def add_node(self, value: int):
+    def add_node(self, value: int) -> None:
         """Add a new node to the graph"""
         node = Node(value)
         self.nodes[value] = node
         self.size += 1
 
-    def add_edge(self, src, dest):
+    def add_edge(self, src, dest) -> None:
         """Add an edge to a node"""
         self.nodes[src].neighbours.add(dest)
         self.nodes[dest].neighbours.add(src)
 
-    def add_edge_list(self, lst: list):
+    def add_edge_list(self, lst: list) -> None:
         """Add a list of edges to the graph"""
         for src, dest in lst:
             self.add_edge(src, dest)
@@ -42,7 +42,7 @@ class Graph:
         for node in self.nodes[value].neighbours:
             yield (value, node)
 
-    def degree(self, value):
+    def degree(self, value) -> int:
         """Compute the degree for a node"""
         return len(self.nodes[value].neighbours)
 
@@ -88,15 +88,10 @@ if __name__ == '__main__':
     graph.add_node(2)
     graph.add_node(4)
     graph.add_node(3)
+    graph.add_node(5)
 
     graph.add_edge(1, 2)
-    graph.add_edge_list([(2, 4), (1, 3)])
+    graph.add_edge_list([(2, 3), (4, 5)])
 
-    print(graph.nodes[1].neighbours)
-    print(graph.nodes[2].neighbours)
+    graph.dfs()
 
-    print(graph.degree(3))
-
-    graph.add_attribute(1, {"age": 12, "city": "Tehran"})
-    for i in graph.adjacency_list(1):
-        print(i)
