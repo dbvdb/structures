@@ -21,11 +21,15 @@ class Stack:
         return self.size == 0
 
     def peek(self):
-        """"""
+        """Show the last element"""
         if self.size == 0:
             return -1
 
         return self.container[-1]
+
+    def clear(self):
+        """Clear the stack"""
+        self.container.clear()
 
 
 if __name__ == '__main__':

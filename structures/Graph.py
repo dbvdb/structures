@@ -2,20 +2,25 @@ from collections import defaultdict
 
 
 class Node:
-    def __init__(self):
+    def __init__(self, value):
+        self.id = value
         self.neighbours = set()
         self.attributes = defaultdict()
+
+    def __repr__(self):
+        return f"<{self.id}>"
 
 
 class Graph:
     def __init__(self):
         self.nodes = {}
+        self.size = 0
 
     def add_node(self, value: int):
         """Add a new node to the graph"""
-        node = Node()
-
+        node = Node(value)
         self.nodes[value] = node
+        self.size += 1
 
     def add_edge(self, src, dest):
         """Add an edge to a node"""
@@ -57,6 +62,21 @@ class Graph:
         """Check whether the graph is empty"""
         return len(self.nodes) == 0
 
+    def get_vectors(self):
+        """Get vectors as an iterator"""
+        for vertex in self.nodes.keys():
+            yield vertex
+
+    def get_edges(self):
+        """Get all edges"""
+        ...
+
+    def __contains__(self, vertex):
+        return vertex in self.nodes
+
+    def __iter__(self):
+        return iter(self.nodes.keys())
+
     def __repr__(self):
         return f"<Graph>"
 
@@ -80,4 +100,3 @@ if __name__ == '__main__':
     graph.add_attribute(1, {"age": 12, "city": "Tehran"})
     for i in graph.adjacency_list(1):
         print(i)
-
